@@ -28,3 +28,28 @@ jobs:
 
     - name: Run tests
       run: npm run test
+    - name: Upload production-ready build files
+      uses: actions/upload-artifact@v3
+      with:
+        name: production
+        path: ./build
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: production
+        path: ./build
+
+    - name: Deploy to Netlify
+      uses: netlify/actions/cli@master
+      env:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      with:
+          args: deploy --dir=build --prod

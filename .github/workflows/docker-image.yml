@@ -18,7 +18,6 @@ jobs:
       uses: actions/docker/cli@v1
       with:
         args: build -t my-image .
-      shell: bash
     - name: Run tests
       uses: actions/docker/cli@v1
       with:

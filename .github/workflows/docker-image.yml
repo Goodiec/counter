@@ -17,4 +17,4 @@ jobs:
     - name: Build and run Docker container
       run: docker build -t my-image .
     - name: Run tests
-      run: npm test
+      run: npm run test

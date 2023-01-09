@@ -23,4 +23,3 @@ jobs:
       uses: actions/docker/cli@v1
       with:
         args: run my-image npm test
-      shell: bash

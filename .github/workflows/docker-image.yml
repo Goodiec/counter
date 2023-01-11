@@ -24,7 +24,7 @@ jobs:
       run: docker-compose build app
       
     - name: Docker Push
-      run: docker push ${{secrets.DOCKER_USER}}/counter_app:latest
+      run: docker push ${{secrets.DOCKER_USER}}/counter_app
   test:
 
     runs-on: ubuntu-latest
